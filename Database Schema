@@ -1,0 +1,22 @@
+v1.0 
+
+Membership List 
+  Flyer Number          INT       Not Null - Autoincrement - Primary Key 
+  First Name            TEXT      Not Null 
+  Last Name             TEXT      Not Null 
+  Outdoor Aircraft      Boolean   Not null 
+  Fixed Wing Aircraft   Boolean   Not null 
+  Rotary Wing Aircaft   Boolean   Not null 
+  
+  
+  
+Event Tracker 
+  Flyer Number          INT       Not Null  - Foreign Key
+  Event                 TEXT(20)  Not Null 
+  Upper Gym Start Time  TEXT(20)  Not Null
+  Upper Gym End Time    TEXT(20)  Not Null
+  Lower Gym Start Time  TEXT(20)  Not Null
+  Lower Gym End Time    TEXT(20)  Not Null
+  Spectator Number      INT       Not Null 
+  Create Date           TEXT      Not Null - Creation date timestamp 
+  Last Update           TEXT      Not Null - Current Timestamp
