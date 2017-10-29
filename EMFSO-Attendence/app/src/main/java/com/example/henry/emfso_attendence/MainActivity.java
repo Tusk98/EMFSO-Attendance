@@ -6,7 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.henry.emfso_attendence.db.AttendenceDataSource;
+
 public class MainActivity extends AppCompatActivity {
+
+  private AttendenceDataSource dataSource;
+
   public static Button new_user_btn;
   public static Button attendence_btn;
   public static Button records_btn;
@@ -15,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+
+    dataSource = new AttendenceDataSource(this);
   }
 
   public void OnClickButtonListenerMainMenu() {
@@ -31,7 +38,17 @@ public class MainActivity extends AppCompatActivity {
       }
     });
 
+  }
 
+  @Override
+  public void onResume() {
+    super.onResume();
+    dataSource.open();
+  }
+
+  public void onPause() {
+    super.onPause();
+    dataSource.close();
   }
 
 }

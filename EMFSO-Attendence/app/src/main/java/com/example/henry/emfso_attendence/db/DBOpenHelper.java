@@ -13,9 +13,6 @@ public class DBOpenHelper extends SQLiteOpenHelper {
   private static final String DATABASE_NAME = "membership_list.db";
   private static final int DATABASE_VERSION = 1;
 
-
-
-
   public DBOpenHelper(Context context) {
     super(context, DATABASE_NAME, null, DATABASE_VERSION);
   }

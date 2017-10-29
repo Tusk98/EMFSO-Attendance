@@ -36,7 +36,7 @@ final class DatabaseContract {
                   OUTDOOR + " INTEGER NOT NULL," +
                   FIXED_WING + " INTEGER NOT NULL, " +
                   ROTARY_WING + " INTEGER NOT NULL, " +
-                  JUNIOR + " INTEGER NOT NULL, " +
+                  JUNIOR + " INTEGER NOT NULL" +
                   ")";
 
   static final String CREATE_EVENT_TRACKER_TABLE =
@@ -47,8 +47,8 @@ final class DatabaseContract {
                   UPPER_END + " TEXT NULL, " +
                   LOWER_START + " TEXT NULL, " +
                   LOWER_END + " TEXT NULL, " +
-                  SPECTATORS + " INTEGER NULL " +
-                  CREATE_DATE + " TEXT default CURRENT_TIMESTAMP" +
+                  SPECTATORS + " INTEGER NULL, " +
+                  CREATE_DATE + " TEXT default CURRENT_TIMESTAMP, " +
                   UPDATE_DATE + " TEXT default CURRENT_TIMESTAMP" +
                   ")";
 
