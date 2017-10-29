@@ -4,9 +4,10 @@ Membership List
   Flyer Number          INT       Not Null - Autoincrement - Primary Key 
   First Name            TEXT      Not Null 
   Last Name             TEXT      Not Null 
-  Outdoor Aircraft      Boolean   Not null 
-  Fixed Wing Aircraft   Boolean   Not null 
-  Rotary Wing Aircaft   Boolean   Not null 
+  Outdoor Aircraft      Boolean   Not Null 
+  Fixed Wing Aircraft   Boolean   Not Null 
+  Rotary Wing Aircaft   Boolean   Not Null 
+  Junior Flyer          Boolean   Not Null
   
   
   
