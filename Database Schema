@@ -14,10 +14,10 @@ Membership List
 Event Tracker 
   Flyer Number          INT       Not Null  - Foreign Key
   Event                 TEXT(20)  Not Null 
-  Upper Gym Start Time  TEXT(20)  Not Null
-  Upper Gym End Time    TEXT(20)  Not Null
-  Lower Gym Start Time  TEXT(20)  Not Null
-  Lower Gym End Time    TEXT(20)  Not Null
+  Upper Gym Start Time  DATE+TIME Null
+  Upper Gym End Time    DATE+TIME Null
+  Lower Gym Start Time  DATE+TIME Null
+  Lower Gym End Time    DATE+TIME Null
   Spectator Number      INT       Not Null 
   Create Date           TEXT      Not Null - Creation date timestamp 
   Last Update           TEXT      Not Null - Current Timestamp
