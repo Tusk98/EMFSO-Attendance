@@ -36,12 +36,12 @@ final class DatabaseContract {
                   OUTDOOR + " INTEGER NOT NULL," +
                   FIXED_WING + " INTEGER NOT NULL, " +
                   ROTARY_WING + " INTEGER NOT NULL, " +
-                  JUNIOR + " INTEGER NOT NULL" +
-                  ")";
+                  JUNIOR + " INTEGER NOT NULL " +
+                  "UNIQUE (" + FLYER_NUMBER + ") ON CONFLICT REPLACE )";
 
   static final String CREATE_EVENT_TRACKER_TABLE =
           " CREATE TABLE " + EVENT_TABLE_NAME + " (" +
-                  FLYER_NUMBER + " INTEGER FOREIGN KEY NOT NULL, " +
+                  FLYER_NUMBER + " INTEGER PRIMARY KEY NOT NULL, " +
                   EVENT + " TEXT NOT NULL, " +
                   UPPER_START + " TEXT NULL, " +
                   UPPER_END + " TEXT NULL, " +
@@ -49,8 +49,9 @@ final class DatabaseContract {
                   LOWER_END + " TEXT NULL, " +
                   SPECTATORS + " INTEGER NULL, " +
                   CREATE_DATE + " TEXT default CURRENT_TIMESTAMP, " +
-                  UPDATE_DATE + " TEXT default CURRENT_TIMESTAMP" +
-                  ")";
+                  UPDATE_DATE + " TEXT default CURRENT_TIMESTAMP," +
+                  " FOREIGN KEY (" + FLYER_NUMBER + ") REFERENCES " + MEMBERSHIP_TABLE_NAME +
+                  "(" + FLYER_NUMBER+"))";
 
   public static class EventRecorder implements BaseColumns {
     public static final String EVENT_TABLE_NAME = "event_tracker";
