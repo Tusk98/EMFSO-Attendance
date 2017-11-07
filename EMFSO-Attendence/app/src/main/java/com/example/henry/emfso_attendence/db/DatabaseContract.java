@@ -2,6 +2,7 @@ package com.example.henry.emfso_attendence.db;
 
 import android.provider.BaseColumns;
 
+import static com.example.henry.emfso_attendence.db.DatabaseContract.EventRecorder.ATTENDENCE_ID;
 import static com.example.henry.emfso_attendence.db.DatabaseContract.EventRecorder.CREATE_DATE;
 import static com.example.henry.emfso_attendence.db.DatabaseContract.EventRecorder.EVENT;
 import static com.example.henry.emfso_attendence.db.DatabaseContract.EventRecorder.EVENT_TABLE_NAME;
@@ -33,15 +34,15 @@ final class DatabaseContract {
                   FLYER_NUMBER + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                   FIRST_NAME + " TEXT NOT NULL, " +
                   LAST_NAME + " TEXT NOT NULL, " +
-                  OUTDOOR + " INTEGER NOT NULL," +
+                  OUTDOOR + " INTEGER NOT NULL, " +
                   FIXED_WING + " INTEGER NOT NULL, " +
                   ROTARY_WING + " INTEGER NOT NULL, " +
-                  JUNIOR + " INTEGER NOT NULL " +
-                  "UNIQUE (" + FLYER_NUMBER + ") ON CONFLICT REPLACE )";
+                  JUNIOR + " INTEGER NOT NULL";
 
   static final String CREATE_EVENT_TRACKER_TABLE =
-          " CREATE TABLE " + EVENT_TABLE_NAME + " (" +
-                  FLYER_NUMBER + " INTEGER PRIMARY KEY NOT NULL, " +
+          "CREATE TABLE " + EVENT_TABLE_NAME + " (" +
+                  ATTENDENCE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                  FLYER_NUMBER + " INTEGER NOT NULL, " +
                   EVENT + " TEXT NOT NULL, " +
                   UPPER_START + " TEXT NULL, " +
                   UPPER_END + " TEXT NULL, " +
@@ -54,6 +55,7 @@ final class DatabaseContract {
                   "(" + FLYER_NUMBER+"))";
 
   public static class EventRecorder implements BaseColumns {
+    public static final String ATTENDENCE_ID = "attendence_id";
     public static final String EVENT_TABLE_NAME = "event_tracker";
     public static final String FLYER_NUMBER = "flyer_number";
     public static final String EVENT = "event";

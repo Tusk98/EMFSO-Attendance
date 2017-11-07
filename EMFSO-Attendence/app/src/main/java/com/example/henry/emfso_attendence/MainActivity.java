@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.henry.emfso_attendence.db.DatabaseDataSource;
 
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
 
     dataSource = dataSource.getDataSourceInstance(this);
+    Toast toast = Toast.makeText(getApplicationContext(), "HASDOI", Toast.LENGTH_SHORT);
+    toast.show();
     onClickButtonListenerMainMenu();
   }
 
@@ -38,19 +41,14 @@ public class MainActivity extends AppCompatActivity {
       }
     });
 
-  }
+    attendence_btn.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent intent = new Intent(v.getContext(), New_Record.class);
+        startActivity(intent);
+      }
+    });
 
-
-  @Override
-  public void onResume() {
-    super.onResume();
-    //dataSource.open();
-  }
-
-  @Override
-  public void onPause() {
-    super.onPause();
-    //dataSource.close();
   }
 
 }

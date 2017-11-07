@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.content.Context;
 import android.util.Log;
 
+import com.example.henry.emfso_attendence.database_content.AttendenceEntry;
 import com.example.henry.emfso_attendence.database_content.User;
 
 /**
@@ -53,6 +54,12 @@ public class DatabaseDataSource {
             null, values);
     Log.d(TAG, rowId + " id for new user");
     return rowId;
+  }
+
+  public long newAttendence(AttendenceEntry atten) {
+    ContentValues values = new ContentValues();
+    values.put(DatabaseContract.EventRecorder.FLYER_NUMBER, atten.getFlyer_num());
+    
   }
 
 }

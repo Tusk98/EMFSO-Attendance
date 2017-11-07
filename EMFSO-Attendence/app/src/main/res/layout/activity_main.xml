@@ -50,7 +50,8 @@
     android:layout_marginLeft="8dp"
     app:layout_constraintLeft_toLeftOf="parent"
     android:layout_marginBottom="8dp"
-    app:layout_constraintBottom_toTopOf="@+id/new_user_btn"/>
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintVertical_bias="0.166"/>
 
   <Button
     android:id="@+id/records_btn"

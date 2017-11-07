@@ -5,6 +5,116 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context="com.example.henry.emfso_attendence.new_record">
+  tools:context="com.example.henry.emfso_attendence.New_Record">
 
+  <ScrollView
+    android:layout_width="368dp"
+    android:layout_height="495dp"
+    tools:layout_editor_absoluteY="8dp"
+    tools:layout_editor_absoluteX="8dp">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+
+      <TextView
+        android:id="@+id/flyer_names"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"/>
+
+      <EditText
+        android:id="@+id/flyer_num_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"/>
+
+      <TextView
+        android:id="@+id/eventText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Event name:"/>
+
+      <EditText
+        android:id="@+id/event_name_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"/>
+
+      <TextView
+        android:id="@+id/upperSTimeText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Upper Gym Start Time"/>
+
+      <EditText
+        android:id="@+id/upperStart_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"/>
+
+      <TextView
+        android:id="@+id/upperETimeText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Upper Gym End Time"/>
+
+      <EditText
+        android:id="@+id/upperEnd_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"/>
+
+      <TextView
+        android:id="@+id/lowerSTimeText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lower Gym Start Time"/>
+
+      <EditText
+        android:id="@+id/lowerStart_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"/>
+
+      <TextView
+        android:id="@+id/lowerETimeText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lower Gym End Time"/>
+
+      <EditText
+        android:id="@+id/lowerEnd_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"/>
+
+      <TextView
+        android:id="@+id/spectatorText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Number of Spectators"/>
+
+      <EditText
+        android:id="@+id/spectator_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"/>
+
+      <Button
+        android:id="@+id/create_record_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create Record"/>
+
+    </LinearLayout>
+  </ScrollView>
 </android.support.constraint.ConstraintLayout>
