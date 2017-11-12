@@ -1,4 +1,4 @@
-package com.example.henry.emfso_attendence.database_content;
+package com.emfso.henry.emfso_attendence.database_content;
 
 /**
  * Created by henry on 2017-10-29.

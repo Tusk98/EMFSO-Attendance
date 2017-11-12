@@ -1,4 +1,4 @@
-package com.example.henry.emfso_attendence.db;
+package com.emfso.henry.emfso_attendence.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

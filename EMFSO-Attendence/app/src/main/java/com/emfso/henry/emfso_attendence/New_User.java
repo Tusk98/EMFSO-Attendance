@@ -1,4 +1,4 @@
-package com.example.henry.emfso_attendence;
+package com.emfso.henry.emfso_attendence;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.ContactsContract;
@@ -10,9 +10,9 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.henry.emfso_attendence.database_content.User;
-import com.example.henry.emfso_attendence.db.DBOpenHelper;
-import com.example.henry.emfso_attendence.db.DatabaseDataSource;
+import com.emfso.henry.emfso_attendence.database_content.User;
+import com.emfso.henry.emfso_attendence.db.DBOpenHelper;
+import com.emfso.henry.emfso_attendence.db.DatabaseDataSource;
 
 public class New_User extends AppCompatActivity {
 
@@ -59,18 +59,6 @@ public class New_User extends AppCompatActivity {
         toast.show();
       }
     });
-  }
-
-  @Override
-  public void onResume() {
-    super.onResume();
-    dataSource.open();
-  }
-
-  @Override
-  public void onPause() {
-    super.onPause();
-    dataSource.close();
   }
 
 }

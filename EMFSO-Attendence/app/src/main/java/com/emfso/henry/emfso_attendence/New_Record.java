@@ -1,4 +1,4 @@
-package com.example.henry.emfso_attendence;
+package com.emfso.henry.emfso_attendence;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,12 +8,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.henry.emfso_attendence.database_content.AttendenceEntry;
-import com.example.henry.emfso_attendence.db.DatabaseDataSource;
+import com.emfso.henry.emfso_attendence.database_content.AttendenceEntry;
+import com.emfso.henry.emfso_attendence.db.DatabaseDataSource;
+
+import java.util.List;
 
 public class New_Record extends AppCompatActivity {
 
-  private DatabaseDataSource dataSource;
+  private static DatabaseDataSource dataSource;
 
   public static TextView flyer_id;
   public static EditText flyer_input;
@@ -43,6 +45,8 @@ public class New_Record extends AppCompatActivity {
     lowerEnd = (EditText) findViewById(R.id.lowerEnd_input);
     spectators = (EditText) findViewById(R.id.spectator_input);
     new_record_btn = (Button) findViewById(R.id.create_record_btn);
+    String flyers = getFlyerText();
+    flyer_id.setText(flyers);
 
     new_record_btn.setOnClickListener(new View.OnClickListener() {
       @Override
@@ -64,16 +68,13 @@ public class New_Record extends AppCompatActivity {
     });
   }
 
-  @Override
-  public void onResume() {
-    super.onResume();
-    dataSource.open();
-  }
-
-  @Override
-  public void onPause() {
-    super.onPause();
-    dataSource.close();
+  private String getFlyerText() {
+    List<String> list = dataSource.getFlyerIdentification();
+    String result = "";
+    for (String item : list) {
+      result += item + "\n";
+    }
+    return result;
   }
 
 }

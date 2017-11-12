@@ -1,4 +1,4 @@
-package com.example.henry.emfso_attendence;
+package com.emfso.henry.emfso_attendence;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.henry.emfso_attendence.db.DatabaseDataSource;
+import com.emfso.henry.emfso_attendence.db.DatabaseDataSource;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,15 +16,14 @@ public class MainActivity extends AppCompatActivity {
   public static Button create_user_btn;
   public static Button attendence_btn;
   public static Button records_btn;
+  public static Button db_btn;
+  private boolean dbOpen = false;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-
     dataSource = dataSource.getDataSourceInstance(this);
-    Toast toast = Toast.makeText(getApplicationContext(), "HASDOI", Toast.LENGTH_SHORT);
-    toast.show();
     onClickButtonListenerMainMenu();
   }
 
@@ -32,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     create_user_btn = (Button) findViewById(R.id.create_user_btn);
     attendence_btn = (Button) findViewById(R.id.attendence_btn);
     records_btn = (Button) findViewById(R.id.records_btn);
+    db_btn = (Button) findViewById(R.id.dbButton);
+    updateDB_BtnText();
 
     create_user_btn.setOnClickListener(new View.OnClickListener() {
       @Override
@@ -48,6 +49,31 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
       }
     });
+
+    db_btn.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        dbHandler();
+      }
+    });
+  }
+
+  private void updateDB_BtnText() {
+    if (dbOpen)
+      db_btn.setText("Database OPEN");
+    else
+      db_btn.setText("Database CLOSED");
+  }
+
+  private void dbHandler() {
+    if (dbOpen == false) {
+      dataSource.open();
+      dbOpen = true;
+    } else {
+      dataSource.close();
+      dbOpen = false;
+    }
+    updateDB_BtnText();
 
   }
 

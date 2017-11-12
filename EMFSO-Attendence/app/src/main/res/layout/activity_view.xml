@@ -5,6 +5,32 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context="com.example.henry.emfso_attendence.View">
+  tools:context="com.emfso.henry.emfso_attendence.View"
+  tools:layout_editor_absoluteY="81dp"
+  tools:layout_editor_absoluteX="0dp">
 
+  <RelativeLayout
+    android:layout_width="368dp"
+    android:layout_height="495dp"
+    android:layout_marginLeft="8dp"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:layout_marginTop="8dp">
+
+    <TextView
+      android:id="@+id/view_flyer_id"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="TextView"/>
+
+    <EditText
+      android:id="@+id/view_flyer_name"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:ems="10"
+      android:inputType="textPersonName"
+      android:text="Name"
+      android:layout_alignParentTop="true"
+      android:layout_toEndOf="@+id/view_flyer_id"/>
+  </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

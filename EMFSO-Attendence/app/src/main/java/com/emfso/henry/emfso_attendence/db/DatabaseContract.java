@@ -1,35 +1,35 @@
-package com.example.henry.emfso_attendence.db;
+package com.emfso.henry.emfso_attendence.db;
 
 import android.provider.BaseColumns;
 
-import static com.example.henry.emfso_attendence.db.DatabaseContract.EventRecorder.ATTENDENCE_ID;
-import static com.example.henry.emfso_attendence.db.DatabaseContract.EventRecorder.CREATE_DATE;
-import static com.example.henry.emfso_attendence.db.DatabaseContract.EventRecorder.EVENT;
-import static com.example.henry.emfso_attendence.db.DatabaseContract.EventRecorder.EVENT_TABLE_NAME;
-import static com.example.henry.emfso_attendence.db.DatabaseContract.EventRecorder.LOWER_END;
-import static com.example.henry.emfso_attendence.db.DatabaseContract.EventRecorder.LOWER_START;
-import static com.example.henry.emfso_attendence.db.DatabaseContract.EventRecorder.SPECTATORS;
-import static com.example.henry.emfso_attendence.db.DatabaseContract.EventRecorder.UPDATE_DATE;
-import static com.example.henry.emfso_attendence.db.DatabaseContract.EventRecorder.UPPER_END;
-import static com.example.henry.emfso_attendence.db.DatabaseContract.EventRecorder.UPPER_START;
-import static com.example.henry.emfso_attendence.db.DatabaseContract.MembershipList.FIRST_NAME;
-import static com.example.henry.emfso_attendence.db.DatabaseContract.MembershipList.FIXED_WING;
-import static com.example.henry.emfso_attendence.db.DatabaseContract.MembershipList.FLYER_NUMBER;
-import static com.example.henry.emfso_attendence.db.DatabaseContract.MembershipList.JUNIOR;
-import static com.example.henry.emfso_attendence.db.DatabaseContract.MembershipList.LAST_NAME;
-import static com.example.henry.emfso_attendence.db.DatabaseContract.MembershipList.MEMBERSHIP_TABLE_NAME;
-import static com.example.henry.emfso_attendence.db.DatabaseContract.MembershipList.OUTDOOR;
-import static com.example.henry.emfso_attendence.db.DatabaseContract.MembershipList.ROTARY_WING;
+import static com.emfso.henry.emfso_attendence.db.DatabaseContract.EventRecorder.ATTENDENCE_ID;
+import static com.emfso.henry.emfso_attendence.db.DatabaseContract.EventRecorder.CREATE_DATE;
+import static com.emfso.henry.emfso_attendence.db.DatabaseContract.EventRecorder.EVENT;
+import static com.emfso.henry.emfso_attendence.db.DatabaseContract.EventRecorder.EVENT_TABLE_NAME;
+import static com.emfso.henry.emfso_attendence.db.DatabaseContract.EventRecorder.LOWER_END;
+import static com.emfso.henry.emfso_attendence.db.DatabaseContract.EventRecorder.LOWER_START;
+import static com.emfso.henry.emfso_attendence.db.DatabaseContract.EventRecorder.SPECTATORS;
+import static com.emfso.henry.emfso_attendence.db.DatabaseContract.EventRecorder.UPDATE_DATE;
+import static com.emfso.henry.emfso_attendence.db.DatabaseContract.EventRecorder.UPPER_END;
+import static com.emfso.henry.emfso_attendence.db.DatabaseContract.EventRecorder.UPPER_START;
+import static com.emfso.henry.emfso_attendence.db.DatabaseContract.MembershipList.FIRST_NAME;
+import static com.emfso.henry.emfso_attendence.db.DatabaseContract.MembershipList.FIXED_WING;
+import static com.emfso.henry.emfso_attendence.db.DatabaseContract.MembershipList.FLYER_NUMBER;
+import static com.emfso.henry.emfso_attendence.db.DatabaseContract.MembershipList.JUNIOR;
+import static com.emfso.henry.emfso_attendence.db.DatabaseContract.MembershipList.LAST_NAME;
+import static com.emfso.henry.emfso_attendence.db.DatabaseContract.MembershipList.MEMBERSHIP_TABLE_NAME;
+import static com.emfso.henry.emfso_attendence.db.DatabaseContract.MembershipList.OUTDOOR;
+import static com.emfso.henry.emfso_attendence.db.DatabaseContract.MembershipList.ROTARY_WING;
 
 /**
  * Created by henry on 2017-10-28.
  */
 
-final class DatabaseContract {
+public final class DatabaseContract {
 
   private DatabaseContract() {}
 
-  static final String CREATE_MEMBERSHIP_LIST_TABLE =
+  public static final String CREATE_MEMBERSHIP_LIST_TABLE =
           "CREATE TABLE " + MEMBERSHIP_TABLE_NAME + " (" +
                   FLYER_NUMBER + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                   FIRST_NAME + " TEXT NOT NULL, " +
@@ -37,9 +37,9 @@ final class DatabaseContract {
                   OUTDOOR + " INTEGER NOT NULL, " +
                   FIXED_WING + " INTEGER NOT NULL, " +
                   ROTARY_WING + " INTEGER NOT NULL, " +
-                  JUNIOR + " INTEGER NOT NULL";
+                  JUNIOR + " INTEGER NOT NULL)";
 
-  static final String CREATE_EVENT_TRACKER_TABLE =
+  public static final String CREATE_EVENT_TRACKER_TABLE =
           "CREATE TABLE " + EVENT_TABLE_NAME + " (" +
                   ATTENDENCE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                   FLYER_NUMBER + " INTEGER NOT NULL, " +
@@ -50,7 +50,7 @@ final class DatabaseContract {
                   LOWER_END + " TEXT NULL, " +
                   SPECTATORS + " INTEGER NULL, " +
                   CREATE_DATE + " TEXT default CURRENT_TIMESTAMP, " +
-                  UPDATE_DATE + " TEXT default CURRENT_TIMESTAMP," +
+                  UPDATE_DATE + " TEXT default CURRENT_TIMESTAMP, " +
                   " FOREIGN KEY (" + FLYER_NUMBER + ") REFERENCES " + MEMBERSHIP_TABLE_NAME +
                   "(" + FLYER_NUMBER+"))";
 
