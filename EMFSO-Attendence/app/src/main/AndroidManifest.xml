@@ -4,9 +4,14 @@
           android:versionCode="2"
           android:versionName="2.01">
 
-  <uses-sdk android:minSdkVersion="19"
-            android:targetSdkVersion="26"
-            android:maxSdkVersion="26"/>
+  <uses-sdk
+    android:maxSdkVersion="26"
+    android:minSdkVersion="19"
+    android:targetSdkVersion="26"/>
+
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+  <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
   <application
     android:allowBackup="true"
@@ -26,7 +31,7 @@
     </activity>
     <activity android:name=".New_Record">
     </activity>
-    <activity android:name=".View">
+    <activity android:name=".View_Tables">
     </activity>
   </application>
 

@@ -91,8 +91,24 @@ public class DatabaseDataSource {
       result.add(personId);
     }while (cursor.moveToNext());
 
+    return result;
+  }
 
+  public List<String> getAttendanceRecord() {
+    List<String> result = new ArrayList<>();
+    String query = "SELECT * FROM " + DatabaseContract.EventRecorder.EVENT_TABLE_NAME;
 
+    Cursor cursor = database.rawQuery(query, null);
+    cursor.moveToFirst();
+
+    do {
+      String record = "# ";
+      record += cursor.getString(cursor.getColumnIndex(DatabaseContract.EventRecorder.ATTENDENCE_ID));
+      record += "\n Flyer Number: " +
+              cursor.getString(cursor.getColumnIndex(DatabaseContract.EventRecorder.FLYER_NUMBER));
+      record += "\n Event: " +
+              cursor.getString(cursor.getColumnIndex(DatabaseContract.EventRecorder.EVENT));
+    } while (cursor.moveToNext());
     return result;
   }
 

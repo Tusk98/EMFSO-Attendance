@@ -50,6 +50,14 @@ public class MainActivity extends AppCompatActivity {
       }
     });
 
+    records_btn.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent intent = new Intent (v.getContext(), View_Tables.class);
+        startActivity(intent);
+      }
+    });
+
     db_btn.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {

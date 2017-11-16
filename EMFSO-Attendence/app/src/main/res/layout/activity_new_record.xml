@@ -30,7 +30,7 @@
         android:id="@+id/flyer_names"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView"/>
+        android:text="No users initiated in Database"/>
 
       <EditText
         android:id="@+id/flyer_num_input"
