@@ -7,19 +7,35 @@
   android:layout_height="match_parent"
   tools:context="com.emfso.henry.emfso_attendence.New_Record">
 
-  <ScrollView
-    android:layout_width="367dp"
-    android:layout_height="236dp"
-    app:layout_constraintTop_toTopOf="parent"
-    android:layout_marginTop="52dp"
-    android:layout_marginLeft="8dp"
-    app:layout_constraintLeft_toLeftOf="parent"
+  <Button
+    android:id="@+id/create_record_btn"
+    android:layout_width="212dp"
+    android:layout_height="39dp"
+    android:text="Create Record"
     android:layout_marginRight="8dp"
     app:layout_constraintRight_toRightOf="parent"
-    android:id="@+id/scrollView2"
+    android:layout_marginLeft="8dp"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:layout_marginTop="8dp"
     app:layout_constraintBottom_toBottomOf="parent"
     android:layout_marginBottom="8dp"
-    app:layout_constraintVertical_bias="0.018">
+    app:layout_constraintVertical_bias="0.0"/>
+
+  <ScrollView
+    android:id="@+id/scrollView2"
+    android:layout_width="364dp"
+    android:layout_height="265dp"
+    android:layout_marginBottom="8dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginTop="52dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintHorizontal_bias="1.0"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.0">
 
     <LinearLayout
       android:layout_width="match_parent"
@@ -36,73 +52,58 @@
         android:id="@+id/flyer_num_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Flyer Number *"
         android:ems="10"
+        android:hint="Flyer Number *"
         android:inputType="number"/>
 
       <EditText
         android:id="@+id/event_name_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Event name"
         android:ems="10"
+        android:hint="Event name"
         android:inputType="textPersonName"/>
 
       <EditText
         android:id="@+id/upperStart_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Upper Gym Start Time"
         android:ems="10"
+        android:hint="Upper Gym Start Time"
         android:inputType="textPersonName"/>
 
       <EditText
         android:id="@+id/upperEnd_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Uppger Gym End Time"
         android:ems="10"
+        android:hint="Uppger Gym End Time"
         android:inputType="textPersonName"/>
 
       <EditText
         android:id="@+id/lowerStart_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Lower Gym Start Time"
         android:ems="10"
+        android:hint="Lower Gym Start Time"
         android:inputType="textPersonName"/>
 
       <EditText
         android:id="@+id/lowerEnd_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Lower Gym End Time"
         android:ems="10"
+        android:hint="Lower Gym End Time"
         android:inputType="textPersonName"/>
 
       <EditText
         android:id="@+id/spectator_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Number of Spectators"
         android:ems="10"
+        android:hint="Number of Spectators"
         android:inputType="number"/>
 
     </LinearLayout>
   </ScrollView>
-
-  <Button
-    android:id="@+id/create_record_btn"
-    android:layout_width="212dp"
-    android:layout_height="39dp"
-    android:text="Create Record"
-    android:layout_marginRight="8dp"
-    app:layout_constraintRight_toRightOf="parent"
-    android:layout_marginLeft="8dp"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    android:layout_marginTop="8dp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    android:layout_marginBottom="8dp"
-    app:layout_constraintVertical_bias="0.0"/>
 </android.support.constraint.ConstraintLayout>

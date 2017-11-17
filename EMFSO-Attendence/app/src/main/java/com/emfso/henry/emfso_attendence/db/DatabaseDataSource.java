@@ -108,6 +108,8 @@ public class DatabaseDataSource {
               cursor.getString(cursor.getColumnIndex(DatabaseContract.EventRecorder.FLYER_NUMBER));
       record += "\n Event: " +
               cursor.getString(cursor.getColumnIndex(DatabaseContract.EventRecorder.EVENT));
+
+      result.add(record);
     } while (cursor.moveToNext());
     return result;
   }
