@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools"
           package="com.emfso.henry.emfso_attendence"
-          android:versionCode="5"
-          android:versionName="2.01">
+          android:versionCode="6"
+          android:versionName="2.1">
 
   <uses-sdk
     android:maxSdkVersion="26"

@@ -89,15 +89,15 @@ public class DatabaseDataSource {
 
     Cursor cursor = database.rawQuery(query, null);
     cursor.moveToFirst();
-
-    do {
-      String personId = "# ";
-      personId += cursor.getString(cursor.getColumnIndex(DatabaseContract.MembershipList.FLYER_NUMBER));
-      personId += " - " + cursor.getString(cursor.getColumnIndex(DatabaseContract.MembershipList.FIRST_NAME));
-      personId += " " + cursor.getString(cursor.getColumnIndex(DatabaseContract.MembershipList.LAST_NAME));
-      result.add(personId);
-    }while (cursor.moveToNext());
-
+    if (cursor.getCount() != 0) {
+      do {
+        String personId = "# ";
+        personId += cursor.getString(cursor.getColumnIndex(DatabaseContract.MembershipList.FLYER_NUMBER));
+        personId += " - " + cursor.getString(cursor.getColumnIndex(DatabaseContract.MembershipList.FIRST_NAME));
+        personId += " " + cursor.getString(cursor.getColumnIndex(DatabaseContract.MembershipList.LAST_NAME));
+        result.add(personId);
+      } while (cursor.moveToNext());
+    }
     return result;
   }
 
@@ -108,16 +108,18 @@ public class DatabaseDataSource {
     Cursor cursor = database.rawQuery(query, null);
     cursor.moveToFirst();
 
-    do {
-      String record = "# ";
-      record += cursor.getString(cursor.getColumnIndex(DatabaseContract.EventRecorder.ATTENDENCE_ID));
-      record += "\n Flyer Number: " +
-              cursor.getString(cursor.getColumnIndex(DatabaseContract.EventRecorder.FLYER_NUMBER));
-      record += "\n Event: " +
-              cursor.getString(cursor.getColumnIndex(DatabaseContract.EventRecorder.EVENT));
+    if (cursor.getCount() != 0) {
+      do {
+        String record = "# ";
+        record += cursor.getString(cursor.getColumnIndex(DatabaseContract.EventRecorder.ATTENDENCE_ID));
+        record += "\n Flyer Number: " +
+                cursor.getString(cursor.getColumnIndex(DatabaseContract.EventRecorder.FLYER_NUMBER));
+        record += "\n Event: " +
+                cursor.getString(cursor.getColumnIndex(DatabaseContract.EventRecorder.EVENT));
 
-      result.add(record);
-    } while (cursor.moveToNext());
+        result.add(record);
+      } while (cursor.moveToNext());
+    }
     return result;
   }
 
