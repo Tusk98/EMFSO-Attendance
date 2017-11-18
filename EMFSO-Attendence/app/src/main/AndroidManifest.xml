@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
           package="com.emfso.henry.emfso_attendence"
-          android:versionCode="2"
+          android:versionCode="5"
           android:versionName="2.01">
 
   <uses-sdk
@@ -9,9 +10,11 @@
     android:minSdkVersion="19"
     android:targetSdkVersion="26"/>
 
+  <!--
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
   <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+  -->
 
   <application
     android:allowBackup="true"

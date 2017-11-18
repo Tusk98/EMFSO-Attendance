@@ -31,6 +31,7 @@ public class New_User extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_new__user);
     dataSource = dataSource.getDataSourceInstance(this);
+    dataSource.open();
     newUserOnClick();
   }
 
@@ -57,8 +58,12 @@ public class New_User extends AppCompatActivity {
         Toast toast = Toast.makeText(v.getContext(),
                 "New user added with Flyer ID #: " + flyerId, Toast.LENGTH_SHORT);
         toast.show();
+        dataSource.close();
+        recreate();
       }
     });
   }
+
+
 
 }

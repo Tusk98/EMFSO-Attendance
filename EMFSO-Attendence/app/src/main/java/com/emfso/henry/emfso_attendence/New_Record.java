@@ -32,6 +32,7 @@ public class New_Record extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_new_record);
     dataSource = dataSource.getDataSourceInstance(this);
+    dataSource.open();
     newAttendenceOnClick();
   }
 
@@ -63,6 +64,8 @@ public class New_Record extends AppCompatActivity {
         Toast toast = Toast.makeText(v.getContext(),
                 "New attendence added with ID #: " + rowId, Toast.LENGTH_SHORT);
         toast.show();
+        dataSource.close();
+        recreate();
       }
 
     });
@@ -75,6 +78,14 @@ public class New_Record extends AppCompatActivity {
       result += item + "\n";
     }
     return result;
+  }
+
+  @Override
+  public void onStop() {
+    super.onStop();
+    if (dataSource.checkOpen() == true) {
+      dataSource.close();
+    }
   }
 
 }

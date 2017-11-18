@@ -18,6 +18,7 @@ public class View_Tables extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_view__tables);
     dataSource = dataSource.getDataSourceInstance(this);
+    dataSource.open();
     loadInfo();
   }
 
@@ -38,6 +39,10 @@ public class View_Tables extends AppCompatActivity {
     for (String item : list) {
       result += item + "\n";
     }
+
+    if (list.isEmpty()) {
+      list.add("");
+    }
     return result;
   }
 
@@ -47,7 +52,20 @@ public class View_Tables extends AppCompatActivity {
     for (String item : list) {
       result += item + "\n\n";
     }
+
+    if (list.isEmpty()) {
+      list.add("");
+    }
+
     return result;
+  }
+
+  @Override
+  public void onStop() {
+    super.onStop();
+    if (dataSource.checkOpen() == true) {
+      dataSource.close();
+    }
   }
 
 }

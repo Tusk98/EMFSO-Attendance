@@ -31,7 +31,7 @@ public class DatabaseDataSource {
     if (dbDataSource == null) {
       dbDataSource = new DatabaseDataSource(context);
     }
-
+    Log.d(DatabaseDataSource.class.getSimpleName(), "DATABASE RETRIEVED ----------------");
     return dbDataSource;
   }
 
@@ -40,9 +40,16 @@ public class DatabaseDataSource {
     Log.d(TAG, "database is opened");
   }
 
-  public void close() {
+    public void close() {
     dbHelper.close();
     Log.d(TAG, "Database is closed");
+  }
+
+  public boolean checkOpen() {
+    if (database != null)
+      return database.isOpen();
+    else
+      return false;
   }
 
   public long newFlyer(User newUser) {
