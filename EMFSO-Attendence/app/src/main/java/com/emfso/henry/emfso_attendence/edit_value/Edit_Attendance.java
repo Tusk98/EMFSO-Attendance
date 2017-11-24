@@ -36,6 +36,69 @@ public class Edit_Attendance extends AppCompatActivity {
     setContentView(R.layout.activity_edit__attendance);
     dataSource = dataSource.getDataSourceInstance(this);
     dataSource.open();
+
+    Bundle extras = getIntent().getExtras();
+    attendanceId = extras.getInt("position") + 1;
+    attendanceEntryToEdit = dataSource.getSpecificRecord(attendanceId);
+    editOnClick();
+  }
+
+  protected void editOnClick() {
+    flyer_id = (TextView) findViewById(R.id.edit_flyer_names);
+    flyer_id.setText(getFlyerText());
+
+    edit_flyer_input = (EditText) findViewById(R.id.edit_flyer_num);
+    edit_eventName = (EditText) findViewById(R.id.edit_event_name);
+    edit_upperStart = (EditText) findViewById(R.id.edit_upperStart);
+    edit_upperEnd = (EditText) findViewById(R.id.edit_upperEnd);
+    edit_lowerStart = (EditText) findViewById(R.id.edit_lowerStart);
+    edit_LowerEnd = (EditText) findViewById(R.id.edit_lowerEnd);
+    edit_spectators = (EditText) findViewById(R.id.edit_spectator);
+    edit_attendance_btn = (Button) findViewById(R.id.edit_record_btn);
+
+    edit_flyer_input.setText(String.valueOf(attendanceEntryToEdit.getFlyer_num()));
+    edit_eventName.setText(attendanceEntryToEdit.getEvent());
+    edit_upperStart.setText(attendanceEntryToEdit.getUpperStart());
+    edit_upperEnd.setText(attendanceEntryToEdit.getUpperEnd());
+    edit_lowerStart.setText(attendanceEntryToEdit.getLowerStart());
+    edit_LowerEnd.setText(attendanceEntryToEdit.getLowerEnd());
+    edit_spectators.setText(String.valueOf(attendanceEntryToEdit.getSpectators()));
+
+    edit_attendance_btn.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        AttendenceEntry newAtten = new AttendenceEntry(
+                edit_flyer_input.getText().toString(),
+                edit_eventName.getText().toString(),
+                edit_upperStart.getText().toString(),
+                edit_upperEnd.getText().toString(),
+                edit_lowerStart.getText().toString(),
+                edit_LowerEnd.getText().toString(),
+                edit_spectators.getText().toString());
+
+        dataSource.updateAttendance(newAtten, attendanceId);
+        finish();
+      }
+    });
+
+
+  }
+
+  private String getFlyerText() {
+    List<String> list = dataSource.getFlyerIdentification();
+    String result = "";
+    for (String item : list) {
+      result += item + "\n";
+    }
+    return result;
+  }
+
+  @Override
+  public void onStop() {
+    super.onStop();
+    if (dataSource.checkOpen() == true) {
+      dataSource.close();
+    }
   }
 
 }

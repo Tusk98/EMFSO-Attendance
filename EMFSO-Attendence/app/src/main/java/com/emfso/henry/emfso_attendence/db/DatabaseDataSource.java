@@ -100,7 +100,7 @@ public class DatabaseDataSource {
   public List<String> getFlyerIdentification() {
     List<String> result = new ArrayList<>();
     String query = "SELECT * FROM " + DatabaseContract.MembershipList.MEMBERSHIP_TABLE_NAME;
-
+    Log.d(TAG, query);
     Cursor cursor = database.rawQuery(query, null);
     cursor.moveToFirst();
     if (cursor.getCount() != 0) {
@@ -118,7 +118,7 @@ public class DatabaseDataSource {
   public List<String> getAttendanceRecord() {
     List<String> result = new ArrayList<>();
     String query = "SELECT * FROM " + DatabaseContract.EventRecorder.EVENT_TABLE_NAME;
-
+    Log.d(TAG, query);
     Cursor cursor = database.rawQuery(query, null);
     cursor.moveToFirst();
 
@@ -144,6 +144,7 @@ public class DatabaseDataSource {
     //Retrieve row of data
     String query = "SELECT * FROM " + DatabaseContract.MembershipList.MEMBERSHIP_TABLE_NAME +
             " WHERE " + DatabaseContract.MembershipList.FLYER_NUMBER + " = " + flyerId;
+    Log.d(TAG, query);
     Cursor cursor = database.rawQuery(query, null);
     cursor.moveToFirst();
     first_name = cursor.getString(cursor.getColumnIndex(DatabaseContract.MembershipList.FIRST_NAME));
@@ -167,6 +168,15 @@ public class DatabaseDataSource {
     ContentValues values = new ContentValues();
     values.put(DatabaseContract.EventRecorder.FLYER_NUMBER, atten.getFlyer_num());
     values.put(DatabaseContract.EventRecorder.EVENT, atten.getEvent());
+    values.put(DatabaseContract.EventRecorder.UPPER_START, atten.getUpperStart());
+    values.put(DatabaseContract.EventRecorder.UPPER_END, atten.getUpperEnd());
+    values.put(DatabaseContract.EventRecorder.LOWER_START, atten.getLowerStart());
+    values.put(DatabaseContract.EventRecorder.LOWER_END, atten.getLowerEnd());
+    values.put(DatabaseContract.EventRecorder.SPECTATORS, atten.getSpectators());
+
+    String selection = DatabaseContract.EventRecorder.ATTENDENCE_ID + " = ?";
+    String[] selectionArgs = {String.valueOf(attendanceId)};
+    database.update(DatabaseContract.EventRecorder.EVENT_TABLE_NAME, values, selection, selectionArgs);
 
   }
 
@@ -176,6 +186,7 @@ public class DatabaseDataSource {
 
     String query = "SELECT * FROM " + DatabaseContract.EventRecorder.EVENT_TABLE_NAME +
             " WHERE " + DatabaseContract.EventRecorder.ATTENDENCE_ID + " = " + attendanceId;
+    Log.d(TAG, query);
     Cursor cursor = database.rawQuery(query, null);
     cursor.moveToFirst();
 

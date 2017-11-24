@@ -50,9 +50,10 @@ public final class DatabaseContract {
                   LOWER_END + " TEXT NULL, " +
                   SPECTATORS + " INTEGER NULL, " +
                   CREATE_DATE + " TEXT default CURRENT_TIMESTAMP, " +
-                  UPDATE_DATE + " TEXT default CURRENT_TIMESTAMP, " +
+                  UPDATE_DATE + " TEXT default CURRENT_TIMESTAMP)";
+                  /*+
                   " FOREIGN KEY (" + FLYER_NUMBER + ") REFERENCES " + MEMBERSHIP_TABLE_NAME +
-                  "(" + FLYER_NUMBER+"))";
+                  "(" + FLYER_NUMBER+"))";*/
 
   public static class EventRecorder implements BaseColumns {
     public static final String ATTENDENCE_ID = "attendence_id";
