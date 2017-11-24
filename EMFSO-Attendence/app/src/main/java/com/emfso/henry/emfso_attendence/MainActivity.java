@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     records_btn.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-          Intent intent = new Intent(v.getContext(), View_Tables.class);
+          Intent intent = new Intent(v.getContext(), View_All_Records.class);
           startActivity(intent);
       }
     });

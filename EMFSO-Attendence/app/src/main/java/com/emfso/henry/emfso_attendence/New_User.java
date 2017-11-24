@@ -64,6 +64,12 @@ public class New_User extends AppCompatActivity {
     });
   }
 
-
+  @Override
+  public void onStop() {
+    super.onStop();
+    if (dataSource.checkOpen() == true) {
+      dataSource.close();
+    }
+  }
 
 }

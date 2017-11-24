@@ -13,8 +13,7 @@
   <!--
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
   <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-  -->
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/> -->
 
   <application
     android:allowBackup="true"
@@ -34,7 +33,11 @@
     </activity>
     <activity android:name=".New_Record">
     </activity>
-    <activity android:name=".View_Tables">
+    <activity android:name=".View_All_Records">
+    </activity>
+    <activity android:name=".edit_value.Edit_User">
+    </activity>
+    <activity android:name=".edit_value.Edit_Attendance">
     </activity>
   </application>
 

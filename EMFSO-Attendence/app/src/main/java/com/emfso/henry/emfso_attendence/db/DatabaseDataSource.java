@@ -67,6 +67,20 @@ public class DatabaseDataSource {
     return rowId;
   }
 
+  public void updateFlyerInfo(User user, int flyerId) {
+    ContentValues values = new ContentValues();
+    values.put(DatabaseContract.MembershipList.FIRST_NAME, user.getFirstName());
+    values.put(DatabaseContract.MembershipList.LAST_NAME, user.getLastName());
+    values.put(DatabaseContract.MembershipList.FIXED_WING, user.isFixed_wing());
+    values.put(DatabaseContract.MembershipList.ROTARY_WING, user.isRotary_wing());
+    values.put(DatabaseContract.MembershipList.OUTDOOR, user.isOutdoor());
+    values.put(DatabaseContract.MembershipList.JUNIOR, user.isJunior());
+
+    String selection = DatabaseContract.MembershipList.FLYER_NUMBER + " = ?";
+    String[] selectionArgs = {String.valueOf(flyerId)};
+    database.update(DatabaseContract.MembershipList.MEMBERSHIP_TABLE_NAME, values, selection, selectionArgs);
+  }
+
   public long newAttendence(AttendenceEntry atten) {
     ContentValues values = new ContentValues();
     values.put(DatabaseContract.EventRecorder.FLYER_NUMBER, atten.getFlyer_num());
@@ -121,6 +135,70 @@ public class DatabaseDataSource {
       } while (cursor.moveToNext());
     }
     return result;
+  }
+
+  public User getSpecificUser(int flyerId) {
+    String first_name, last_name, cursor_outdoor, cursor_fixed, cursor_rotary, cursor_junior;
+    boolean fixed, rotary, junior, outdoor;
+
+    //Retrieve row of data
+    String query = "SELECT * FROM " + DatabaseContract.MembershipList.MEMBERSHIP_TABLE_NAME +
+            " WHERE " + DatabaseContract.MembershipList.FLYER_NUMBER + " = " + flyerId;
+    Cursor cursor = database.rawQuery(query, null);
+    cursor.moveToFirst();
+    first_name = cursor.getString(cursor.getColumnIndex(DatabaseContract.MembershipList.FIRST_NAME));
+    last_name = cursor.getString(cursor.getColumnIndex(DatabaseContract.MembershipList.LAST_NAME));
+    cursor_fixed = cursor.getString(cursor.getColumnIndex(DatabaseContract.MembershipList.FIXED_WING));
+    cursor_rotary = cursor.getString(cursor.getColumnIndex(DatabaseContract.MembershipList.ROTARY_WING));
+    cursor_junior = cursor.getString(cursor.getColumnIndex(DatabaseContract.MembershipList.JUNIOR));
+    cursor_outdoor = cursor.getString(cursor.getColumnIndex(DatabaseContract.MembershipList.OUTDOOR));
+
+    //Convert to boolean value using private method
+    fixed = stringToBoolean(cursor_fixed);
+    rotary = stringToBoolean(cursor_rotary);
+    junior = stringToBoolean(cursor_junior);
+    outdoor = stringToBoolean(cursor_outdoor);
+    User result = new User(first_name, last_name, outdoor, fixed, rotary, junior);
+
+    return result;
+  }
+
+  public void updateAttendance(AttendenceEntry atten, int attendanceId) {
+    ContentValues values = new ContentValues();
+    values.put(DatabaseContract.EventRecorder.FLYER_NUMBER, atten.getFlyer_num());
+    values.put(DatabaseContract.EventRecorder.EVENT, atten.getEvent());
+
+  }
+
+  public AttendenceEntry getSpecificRecord(int attendanceId) {
+
+    String flyer_number, event_name, upperStart, upperEnd, lowerStart, lowerEnd, spectators;
+
+    String query = "SELECT * FROM " + DatabaseContract.EventRecorder.EVENT_TABLE_NAME +
+            " WHERE " + DatabaseContract.EventRecorder.ATTENDENCE_ID + " = " + attendanceId;
+    Cursor cursor = database.rawQuery(query, null);
+    cursor.moveToFirst();
+
+    flyer_number = cursor.getString(cursor.getColumnIndex(DatabaseContract.EventRecorder.FLYER_NUMBER));
+    event_name = cursor.getString(cursor.getColumnIndex(DatabaseContract.EventRecorder.EVENT));
+    upperStart = cursor.getString(cursor.getColumnIndex(DatabaseContract.EventRecorder.UPPER_START));
+    upperEnd = cursor.getString(cursor.getColumnIndex(DatabaseContract.EventRecorder.UPPER_END));
+    lowerStart = cursor.getString(cursor.getColumnIndex(DatabaseContract.EventRecorder.LOWER_START));
+    lowerEnd = cursor.getString(cursor.getColumnIndex(DatabaseContract.EventRecorder.LOWER_END));
+    spectators = cursor.getString(cursor.getColumnIndex(DatabaseContract.EventRecorder.SPECTATORS));
+
+    AttendenceEntry result = new AttendenceEntry(flyer_number, event_name, upperStart, upperEnd,
+            lowerStart, lowerEnd, spectators);
+
+    return result;
+  }
+
+  private boolean stringToBoolean(String text) {
+    if (text.equals("1")) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }
